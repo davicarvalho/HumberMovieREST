@@ -27,6 +27,21 @@ public interface EpisodeWebService {
 
     /**
      * 
+     * @param id
+     * @return
+     *     returns java.util.List<services.Episode>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "findEpisodeBySeason", targetNamespace = "http://services/", className = "services.FindEpisodeBySeason")
+    @ResponseWrapper(localName = "findEpisodeBySeasonResponse", targetNamespace = "http://services/", className = "services.FindEpisodeBySeasonResponse")
+    @Action(input = "http://services/EpisodeWebService/findEpisodeBySeasonRequest", output = "http://services/EpisodeWebService/findEpisodeBySeasonResponse")
+    public List<Episode> findEpisodeBySeason(
+        @WebParam(name = "id", targetNamespace = "")
+        Integer id);
+
+    /**
+     * 
      * @param episode
      * @return
      *     returns services.Episode
